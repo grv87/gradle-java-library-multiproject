@@ -45,4 +45,6 @@ public class Person {
             ", age=" + getAge() +
             '}';
     }
+
+    private LocalDate localDate;
 }
