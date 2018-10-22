@@ -14,9 +14,20 @@
  * limitations under the License.
  */
 
+apply plugin: 'groovy'
 apply plugin: 'java-library'
 
 dependencies {
+    implementation localGroovy()
     api project(':core')
     implementation 'org.apache.commons:commons-lang3:3.4'
+}
+
+configurations {
+    apiElements {
+        outgoing.variants.getByName('classes').artifact(
+            file: compileGroovy.destinationDir,
+            type: ArtifactTypeDefinition.JVM_CLASS_DIRECTORY,
+            builtBy: compileGroovy)
+    }
 }
